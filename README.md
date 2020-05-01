@@ -15,5 +15,5 @@ The first line of input is the upper-right coordinates of the plateau, the lower
 ## Executing the app
 
 1. `git clone` this repository;
-2. In the app folder, run `yarn` to install dependencies;
+2. In the app folder, run `yarn install` to install dependencies;
 3. Run the cli app `node src/index.js`
