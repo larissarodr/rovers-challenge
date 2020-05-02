@@ -1,9 +1,4 @@
-const chalk = require('chalk');
-const log = console.log;
-
-function logInRed(text){
-  log(chalk.red(text));
-};
+const InvalidMoveError = require('../error/InvalidMoveError');
 
 module.exports = {
 
@@ -12,34 +7,30 @@ module.exports = {
     switch (d.toUpperCase()){
       case('N'):
         if(parseInt(y) + 1 > limitY ){
-          logInRed("Cannot go further North. This rover has reached the limit of the plateau.");
-          break;
+          throw new InvalidMoveError("Cannot go further North. This rover has reached the limit of the plateau.");
         }
         newY = parseInt(y) + 1;
         break;
       case('S'):
         if(parseInt(y) - 1 < 0){
-          logInRed("Cannot go further South. This rover has reached the limit of the plateau.");
-          break;
+          throw new InvalidMoveError("Cannot go further South. This rover has reached the limit of the plateau.");
         }
         newY = parseInt(y) - 1;
         break;
       case('E'):
         if(parseInt(x) + 1 > limitX){
-          logInRed("Cannot go further East. This rover has reached the limit of the plateau.");
-          break;
+          throw new InvalidMoveError("Cannot go further East. This rover has reached the limit of the plateau.");
         }
         newX = parseInt(x) + 1;
         break;
       case('W'):
         if(parseInt(x) - 1 < 0){
-          logInRed("Cannot go further West. This rover has reached the limit of the plateau.");
-          break;
+          throw new InvalidMoveError("Cannot go further West. This rover has reached the limit of the plateau.");
         }
         newX = parseInt(x) - 1;
         break;
       default:
-        logInRed('Invalid move. This should have been caught earlier.');
+        throw new InvalidMoveError('Invalid move. This should have been caught earlier.');
     }
     return {
       x: newX,
@@ -84,5 +75,4 @@ module.exports = {
     }
     return { d: newD };
   }
-
 }

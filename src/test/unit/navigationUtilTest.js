@@ -1,7 +1,8 @@
 const chai = require('chai')
 const expect = chai.expect
+const InvalidMoveError = require('../../error/InvalidMoveError');
 
-const navigator = require('../../utils/navigator');
+const navigator = require('../../utils/navigationUtil');
 
 describe('Navigator', () => {
   describe('Move', () => {
@@ -12,12 +13,12 @@ describe('Navigator', () => {
       expect(navigator.move(3,3,'S',3,3)).to.eql({x: 3, y: 2});
     }),
 
-    it('should not move', () => {
-      expect(navigator.move(0,0,'s',3,3)).to.eql({x: 0, y: 0});
-      expect(navigator.move(0,0,'W',3,3)).to.eql({x: 0, y: 0});
-      expect(navigator.move(3,3,'N',3,3)).to.eql({x: 3, y: 3});
-      expect(navigator.move(3,3,'e',3,3)).to.eql({x: 3, y: 3});
-      expect(navigator.move(3,3,'P',3,3)).to.eql({x: 3, y: 3});
+    it('should throw error', () => {
+      expect(navigator.move.bind(navigator,0,0,'s',3,3)).to.throw(InvalidMoveError);
+      expect(navigator.move.bind(navigator,0,0,'W',3,3)).to.throw(InvalidMoveError);
+      expect(navigator.move.bind(navigator,3,3,'N',3,3)).to.throw(InvalidMoveError);
+      expect(navigator.move.bind(navigator,3,3,'e',3,3)).to.throw(InvalidMoveError);
+      expect(navigator.move.bind(navigator,3,3,'P',3,3)).to.throw(InvalidMoveError);
     })
 
   }),

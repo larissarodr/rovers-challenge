@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const validationHelper  = require('./validationHelper');
+const validationHelper  = require('../utils/validationUtil');
 
 module.exports = {
   askUpperRightCoordinates: () => {

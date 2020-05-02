@@ -1659,6 +1659,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+test-console@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/test-console/-/test-console-1.1.0.tgz#34466d421f1b049e1be80d1734bdb5a512889c7f"
+  integrity sha512-pntCc+DnxNVZxNIul3NjThWaLvIrp9GNHRMrriyFWFtq10LpbHGsagu7riq7UIZn79f9aXnKI7YgyMvf8dcKsg==
+
 test-exclude@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-6.0.0.tgz#04a8698661d805ea6fa293b6cb9e63ac044ef15e"
