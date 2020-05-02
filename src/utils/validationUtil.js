@@ -44,6 +44,10 @@ module.exports = {
     return true;
   },
 
+  isValidDesiredAction(value){
+    return (value == '1' || value =='2' || value =='3');
+  },
+
   isValidNumOfRovers(value){
     if(!isPositiveInteger(value)){
       return 'Please, follow the expected format -> [X]. E.g.: 2';

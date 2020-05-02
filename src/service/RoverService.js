@@ -26,7 +26,6 @@ module.exports = {
     }
 
     printingUtil.printLaunchingMessage(rovers);
-    printingUtil.printInstructionsToUser(rovers, willProvideNames);
     
   }
 

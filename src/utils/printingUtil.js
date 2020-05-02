@@ -2,14 +2,6 @@ const chalk = require('chalk');
 const figlet = require('figlet');
 const log = console.log;
 
-function printSpecificInstructions(willProvideNames){
-  if(willProvideNames) {
-    module.exports.logInBlue('[Name]-[Instructions] E.g.: Mike-MMRMLM');
-  } else {
-    module.exports.logInBlue('[Number]-[Instructions] E.g.: 1-MMRMLM');
-  }
-}
-
 module.exports = {
 
   logInRed(text){
@@ -41,19 +33,17 @@ module.exports = {
     module.exports.printCoordinatesForEachRover(rovers);
   },
 
-  printInstructionsToUser(rovers, willProvideNames){
-    
+  printInstructionsToUser(){
     module.exports.logInBlue('The instructions available for each rover are: M - Move, R - Spin 90 degrees right, L - Spin 90 degrees left');
     module.exports.logInBlue('Please, provide in the following format:');
-
-    printSpecificInstructions(willProvideNames);
+    module.exports.logInBlue('[Name/Number]-[Instructions] E.g.: Mike-MMRMLM or 1-MMRMLM');
   },
 
   printCoordinatesForEachRover(rovers){
-    for(x in rovers) module.exports.logInBlueBold(`${x} - Landing position: ${rovers[x].x},${rovers[x].y},${rovers[x].d.toUpperCase()}`);
+    for(x in rovers) module.exports.logInBlueBold(`${x} - Position: ${rovers[x].x},${rovers[x].y},${rovers[x].d.toUpperCase()}`);
   },
 
   printCoordinatesForSpecificRover(roverName, rovers){
-    module.exports.logInBlue(`The position for rover ${roverName} is: ${rovers[roverName].x},${rovers[roverName].y},${rovers[roverName].d}`);
+    module.exports.logInBlueBold(`${roverName} - Position: ${rovers[roverName].x},${rovers[roverName].y},${rovers[roverName].d}`);
   }
 }

@@ -30,6 +30,21 @@ describe('Validator', () => {
     })
   }),
 
+  describe('Check if action is valid', () => {
+    it('should return true', () => {
+      expect(validator.isValidDesiredAction('1')).to.equal(true);
+      expect(validator.isValidDesiredAction('2')).to.equal(true);
+      expect(validator.isValidDesiredAction('3')).to.equal(true);
+    }),
+
+    it('should return false', () => {
+      expect(validator.isValidDesiredAction('0')).to.equal(false);
+      expect(validator.isValidDesiredAction('')).to.equal(false);
+      expect(validator.isValidDesiredAction(' ')).to.equal(false);
+      expect(validator.isValidDesiredAction('a')).to.equal(false);
+    })
+  }),
+
   describe('Check if number provided is valid', () => {
     it('should return true', () => {
       expect(validator.isValidNumOfRovers(3)).to.equal(true);

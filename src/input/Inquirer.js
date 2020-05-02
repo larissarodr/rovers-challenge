@@ -22,6 +22,26 @@ module.exports = {
     return inquirer.prompt(questions);
   },
 
+  askDesiredAction: () => {
+    const questions = [
+      {
+        name: 'desiredAction',
+        type: 'input',
+        message: 'What would you like to do? (1) Print rovers coordinates (2) Move a rover (3) Exit',
+        validate: function( value ) {
+          
+          if (value.length) {            
+            return validationHelper.isValidDesiredAction(value);
+          } else {
+            return 'What would you like to do? (1) Print rovers coordinates (2) Move a rover (3) Exit';
+          }
+        }
+      }
+    ];
+
+    return inquirer.prompt(questions);
+  },
+
   askNumberOfRovers: () => {
     const questions = [
       {
@@ -96,27 +116,6 @@ module.exports = {
 
     return inquirer.prompt(questions);
   },
-
-
-  askIfWouldLikeToProvideInstructions: () => {
-    const questions = [
-      {
-        name: 'provideInstructions',
-        type: 'confirm',
-        message: 'Would you like to provide navigation instructions for a rover?',
-        validate: function(value) {
-          if (value.length) {
-            return true;
-          } else {
-            return 'Would you like to provide navigation instructions for a rover?';
-          }
-        }
-      }
-    ];
-
-    return inquirer.prompt(questions);
-  },
-
 
   askNavigationInstructions: (roverArray) => {
     const questions = [
