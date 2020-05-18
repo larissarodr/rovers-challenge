@@ -19,21 +19,20 @@ module.exports = {
         
         const allInstructions = setOfInstructions.split('');
         for (let i = 0; i < allInstructions.length; i++) {
-          let response;
           try{
             switch(allInstructions[i]){
               case ('M'):
-                response = navigationUtil.move(rovers[roverName].x, rovers[roverName].y, rovers[roverName].d, limitX, limitY);
-                rovers[roverName].x = response.x;
-                rovers[roverName].y = response.y;
+                const newCoordinates = navigationUtil.move(rovers[roverName].x, rovers[roverName].y, rovers[roverName].d, limitX, limitY);
+                rovers[roverName].x = newCoordinates.x;
+                rovers[roverName].y = newCoordinates.y;
                 break;
               case ('L'):
-                response = navigationUtil.flip90left(rovers[roverName].d);
-                rovers[roverName].d = response.d;
+                const dAfterFlipLeft = navigationUtil.flip90left(rovers[roverName].d);
+                rovers[roverName].d = dAfterFlipLeft.d;
                 break;
               case ('R'):
-                response = navigationUtil.flip90right(rovers[roverName].d);
-                rovers[roverName].d = response.d;
+                const dAfterFlipRight = navigationUtil.flip90right(rovers[roverName].d);
+                rovers[roverName].d = dAfterFlipRight.d;
                 break;
               default:
                 printingUtil.logInRed('Invalid instruction. This should have been caught earlier.');
@@ -53,7 +52,7 @@ module.exports = {
 
       }
       
-      response = await inquirer.askDesiredAction();
+      const response = await inquirer.askDesiredAction();
       desiredAction = response.desiredAction;
       keepAsking = (desiredAction != 3);
     }
